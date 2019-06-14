@@ -90,14 +90,41 @@ class App extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			searchName: ''
+			filters: { searchName: '' },
+			pokemons: {
+				isFetching: false,
+				pokemonsData: [],
+				pokemonsType: []
+			}
 		};
 	}
+
+	componentDidMount() {
+		this.fetchPokemonData();
+	}
+
+	fetchPokemonData = () => {
+		const getPokemonData = () =>
+			fetch('https://pokeapi.co/api/v2/pokemon/').then(response =>
+				response.json()
+			);
+
+		const getPokemonTypes = () =>
+			fetch('https://pokeapi.co/api/v2/type/').then(response =>
+				response.json()
+			);
+
+		var promises = [getPokemonData(), getPokemonTypes()];
+
+		Promise.all(promises).then(responses => {
+			console.log(responses);
+		});
+	};
 
 	handlerInputSearch = e => {
 		const { value } = e.currentTarget;
 		this.setState({
-			searchName: value
+			filters: { searchName: value }
 		});
 	};
 
@@ -105,10 +132,14 @@ class App extends React.Component {
 		return (
 			<div>
 				<SearchName
-					searchName={this.state.searchName}
+					searchName={this.state.filters.searchName}
 					handlerInputSearch={this.handlerInputSearch}
 				/>
-				<Pokemon searchName={this.state.searchName} pokemon={pokemon} />
+				<Pokemon
+					searchName={this.state.filters.searchName}
+					handlerInputSearch={this.handlerInputSearch}
+					pokemon={pokemon}
+				/>
 			</div>
 		);
 	}
