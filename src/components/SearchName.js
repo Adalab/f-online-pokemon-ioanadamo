@@ -12,6 +12,7 @@ class SearchName extends React.Component {
 				<form action="">
 					<label htmlFor="searchName" />
 					<input
+						className="input__search"
 						value={searchName}
 						onChange={handlerInputSearch}
 						type="text"

@@ -22,7 +22,11 @@ class Pokemon extends React.Component {
 					.filter(pokemon =>
 						pokemon.name.toUpperCase().includes(searchName.toUpperCase())
 					)
-					.sort((a, b) => a.id < b.id)
+					.sort((a, b) => {
+						if (a.id < b.id) {
+							return -1;
+						}
+					})
 					.map(pokemon => (
 						<li className="container__list" key={pokemon.id}>
 							<Pokelist pokemon={pokemon} />

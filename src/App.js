@@ -18,7 +18,7 @@ class App extends React.Component {
 	}
 
 	fetchPokemonData = () => {
-		fetch('https://pokeapi.co/api/v2/pokemon/')
+		fetch('https://pokeapi.co/api/v2/pokemon/?limit=25')
 			.then(resp => resp.json())
 			.then(pokemonsDataNames => {
 				pokemonsDataNames.results.map(pokemon => {
@@ -43,7 +43,7 @@ class App extends React.Component {
 
 	render() {
 		return (
-			<div>
+			<div className="main__container">
 				<SearchName
 					searchName={this.state.filters.searchName}
 					handlerInputSearch={this.handlerInputSearch}

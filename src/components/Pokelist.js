@@ -5,18 +5,24 @@ class Pokelist extends React.Component {
 	render() {
 		const { pokemon } = this.props;
 		return (
-			<div>
-				<div>
-					  
-					<img src={pokemon.image} alt={pokemon.name} />
-					                <h1 className="title__card">{pokemon.name}</h1>
+			<React.Fragment>
+				<img
+					className="image__pokemon"
+					src={pokemon.image}
+					alt={pokemon.name}
+				/>
+
+				<p className="id__pokemon">ID / {pokemon.id}</p>
+
+				<div className="container__name-and-powers">
+					<h1 className="title__card">{pokemon.name}</h1>
+					<ul className="container__powers-list">
+						{pokemon.types.map((type, ind) => (
+							<li key={ind}>{type}</li>
+						))}
+					</ul>
 				</div>
-				<ul className="container__powers-list">
-					{pokemon.types.map((type, ind) => (
-						<li key={ind}>{type}</li>
-					))}
-				</ul>
-			</div>
+			</React.Fragment>
 		);
 	}
 }
