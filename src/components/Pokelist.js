@@ -3,13 +3,20 @@ import PropTypes from 'prop-types';
 
 class Pokelist extends React.Component {
 	render() {
-		const { types } = this.props;
+		const { pokemon } = this.props;
 		return (
-			<ul className="container__powers-list">
-				{types.map((type, ind) => (
-					<li key={ind}>{type}</li>
-				))}
-			</ul>
+			<div>
+				<div>
+					  
+					<img src={pokemon.image} alt={pokemon.name} />
+					                <h1 className="title__card">{pokemon.name}</h1>
+				</div>
+				<ul className="container__powers-list">
+					{pokemon.types.map((type, ind) => (
+						<li key={ind}>{type}</li>
+					))}
+				</ul>
+			</div>
 		);
 	}
 }
