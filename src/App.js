@@ -43,7 +43,7 @@ class App extends React.Component {
 
 	render() {
 		return (
-			<div className="main__container">
+			<React.Fragment>
 				<SearchName
 					searchName={this.state.filters.searchName}
 					handlerInputSearch={this.handlerInputSearch}
@@ -56,7 +56,7 @@ class App extends React.Component {
 						pokemonsData={this.state.pokemonsData}
 					/>
 				)}
-			</div>
+			</React.Fragment>
 		);
 	}
 }

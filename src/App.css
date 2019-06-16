@@ -2,6 +2,7 @@ body {
   box-sizing: border-box;
   margin: 0;
   max-height: 100vh;
+  background-color: #fee62d;
 }
 
 .container {
@@ -78,9 +79,4 @@ body {
   font-size: 12px;
   border: 1px solid grey;
   margin-right: 5px;
-}
-
-.main__container {
-  background-color: #fee62d;
-  height: 100%;
 }
